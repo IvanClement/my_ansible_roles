@@ -1,0 +1,14 @@
+---
+# tasks file for ping
+- name: fake roles
+  ansible.builtin.debug:
+    msg: "Fake role"
+
+- name: call Linux ping
+  ansible.builtin.include_tasks: ping_linux.yaml
+  when: ansible_system == 'Linux'
+
+- name: call Windows ping
+  ansible.builtin.include_tasks: ping_windows.yaml
+  when: ansible_system == 'Win32NT'
+...
